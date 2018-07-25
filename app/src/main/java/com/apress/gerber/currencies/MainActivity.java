@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -43,6 +44,23 @@ public class MainActivity extends AppCompatActivity {
         mCalcButton = findViewById(R.id.btn_calc);
         mForSpinner = findViewById(R.id.spn_for);
         mHomSpinner = findViewById(R.id.spn_hom);
+
+        //controller: mediates model and view
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                //context
+                this,
+                //view: layout you see when the spinner is closed
+                R.layout.spinner_closed,
+                //model: the array of Strings
+                mCurrencies
+        );
+
+        //view: layout you see when the spinner is open
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        //assign adapters to spinners
+        mHomSpinner.setAdapter(arrayAdapter);
+        mForSpinner.setAdapter(arrayAdapter);
 
     }
 
