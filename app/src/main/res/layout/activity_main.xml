@@ -86,6 +86,7 @@
     <LinearLayout style="@style/layout_back">
 
         <TextView
+            android:id="@+id/txt_converted"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
