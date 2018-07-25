@@ -19,6 +19,5 @@ public class PrefsMgr {
         sSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         return sSharedPreferences.getString(locale, null);
 
-
     }
 }
