@@ -87,6 +87,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         }
 
+        mCalcButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //define behavior here
+            }
+        });
+
     }
 
     public boolean isOnline(){
