@@ -15,7 +15,7 @@ import java.util.Iterator;
 
 public class SplashActivity extends Activity {
     //url to currency codes used in this application
-    public static final String URL_CODES = "http://openexchangerates.org/api/currencies.json";
+    public static final String URL_CODES = "https://openexchangerates.org/api/currencies.json";
     //ArrayList of currencies that will be fetched and passed into MainActivity
     private ArrayList<String> mCurrencies;
 

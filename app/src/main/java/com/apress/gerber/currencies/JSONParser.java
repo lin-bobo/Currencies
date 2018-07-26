@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.net.ssl.HttpsURLConnection;
+
 public class JSONParser {
 
     static InputStream sInputStream = null;
@@ -22,9 +24,9 @@ public class JSONParser {
 
         //attempt to get response from server
         try {
-            HttpURLConnection connection = null;
+            HttpsURLConnection connection = null;
             URL conn_url = new URL(url);
-            connection = (HttpURLConnection) conn_url.openConnection();
+            connection = (HttpsURLConnection) conn_url.openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(8000);
             connection.setReadTimeout(8000);

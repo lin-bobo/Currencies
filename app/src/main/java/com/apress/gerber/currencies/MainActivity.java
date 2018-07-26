@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private String mKey;
     //used to fetch the 'rates' json object from openexchangerates.org
     public static final String RATES = "rates";
-    public static final String URL_BASE = "http://openexchangerates.org/api/latest.json?app_id=";
+    public static final String URL_BASE = "https://openexchangerates.org/api/latest.json?app_id=";
     //used to format data from openexchangerates.org
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,##0.00000");
 
@@ -112,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             mHomSpinner.setSelection(findPositionGivenCode(PrefsMgr.getString(this, HOM), mCurrencies));
 
         }
+
+
 
         mCalcButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -256,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         @Override
         protected JSONObject doInBackground(String... strings) {
 
-            return new JSONParser().getJSONFromUrl(strings[0]);
+            return new JSONParser().getJSONFromUrl(strings[0]+strings[1]);
 
         }
 
