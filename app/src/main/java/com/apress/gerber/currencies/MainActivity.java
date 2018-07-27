@@ -130,7 +130,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mCalcButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CurrencyConverterTask().execute(URL_BASE, mKey);
+                if(isNumeric(String.valueOf(mAmountEditText.getText()))){
+                    new CurrencyConverterTask().execute(URL_BASE, mKey);
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Not a numeric value, try again.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -313,4 +318,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         }
     }
+
+    public static boolean isNumeric(String str){
+        try {
+            double dub = Double.parseDouble(str);
+        }catch (NumberFormatException e){
+            return false;
+        }
+        return true;
+    }
+
 }
