@@ -54,6 +54,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     //used to format data from openexchangerates.org
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,##0.00000");
 
+    //create this interface for instrumentation testing with threads
+    private CurrencyTaskCallback mCurrencyTaskCallback;
+
+    public static interface CurrencyTaskCallback{
+        void executionDone();
+    }
+
+    public void setCurrencyTaskCallback(CurrencyTaskCallback currencyTaskCallback){
+        this.mCurrencyTaskCallback = currencyTaskCallback;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -296,6 +307,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             mConvertedTextView.setText(DECIMAL_FORMAT.format(dCalculated) + " " + strHomCode);
             progressDialog.dismiss();
 
+            //for testing
+            if(mCurrencyTaskCallback != null){
+                mCurrencyTaskCallback.executionDone();
+            }
         }
     }
 }
